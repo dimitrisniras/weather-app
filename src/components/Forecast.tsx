@@ -12,7 +12,7 @@ interface ForecastProps {
   data: ForecastData;
 }
 
-const getWeatherIcon = (iconCode: string) => {
+export const getWeatherIcon = (iconCode: string) => {
   switch (iconCode) {
     case "01d": // Clear sky (day)
     case "01n": // Clear sky (night)
@@ -55,7 +55,6 @@ function Forecast({ data }: ForecastProps) {
           >
             <p className="text-center text-sm mb-2 font-medium text-gray-800">
               {" "}
-              {/* Added text color */}
               {new Date(item.dt * 1000).toLocaleTimeString([], {
                 hour: "2-digit",
                 minute: "2-digit",
@@ -69,7 +68,6 @@ function Forecast({ data }: ForecastProps) {
             </p>
             <div className="flex flex-col items-center mt-2 space-y-1 text-sm text-gray-600">
               {" "}
-              {/* Added text color */}
               <div className="flex items-center">
                 <span className="mr-1">High:</span>
                 <span className="font-medium">
