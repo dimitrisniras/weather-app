@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 
 interface SearchProps {
   onSearch: (searchLocation: string) => void;
@@ -26,13 +27,14 @@ function Search({ onSearch }: SearchProps) {
         placeholder="Enter city"
         value={searchInput}
         onChange={handleInputChange}
-        className="border border-gray-300 rounded-l-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="border border-gray-300 rounded-md py-2 px-3 flex-grow focus:outline-none focus:ring-2 focus:ring-blue-500 
+                   placeholder-gray-500 text-gray-800"
       />
       <button
         type="submit"
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r-md"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md ml-2" // Adjusted button styling
       >
-        Search
+        <MagnifyingGlassIcon className="h-5 w-5" /> {/* Add search icon */}
       </button>
     </form>
   );
