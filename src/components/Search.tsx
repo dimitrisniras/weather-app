@@ -32,9 +32,9 @@ function Search({ onSearch }: SearchProps) {
       />
       <button
         type="submit"
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md ml-2" // Adjusted button styling
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md ml-2"
       >
-        <MagnifyingGlassIcon className="h-5 w-5" /> {/* Add search icon */}
+        <MagnifyingGlassIcon className="h-5 w-5" />
       </button>
     </form>
   );

@@ -1,19 +1,15 @@
 "use client";
 
-import {
-  WiDaySunny,
-  WiThermometer,
-  WiHumidity,
-  WiStrongWind,
-} from "react-icons/wi";
-import { getWeatherIcon } from "./Forecast";
+import { WiThermometer, WiHumidity, WiStrongWind } from "react-icons/wi";
+import ErrorDisplay from "@/components/ErrorDisplay";
+import { getWeatherIcon } from "@/components/Forecast";
 
 interface CurrentWeatherProps {
   data: WeatherData;
 }
 
 function CurrentWeather({ data }: CurrentWeatherProps) {
-  if (!data) return null;
+  if (!data) return <ErrorDisplay message="No weather data available." />;
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
