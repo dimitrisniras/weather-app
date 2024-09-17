@@ -1,23 +1,22 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 interface SearchProps {
   onSearch: (searchLocation: string) => void;
 }
 
 function Search({ onSearch }: SearchProps) {
-  const [searchInput, setSearchInput] = useState<string>('');
+  const [searchInput, setSearchInput] = useState<string>("");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(event.target.value);   
+    setSearchInput(event.target.value);
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();   
-
+    event.preventDefault();
     onSearch(searchInput);
-    setSearchInput('');
+    setSearchInput("");
   };
 
   return (
@@ -31,7 +30,9 @@ function Search({ onSearch }: SearchProps) {
       />
       <button
         type="submit"
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r-md">Search
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r-md"
+      >
+        Search
       </button>
     </form>
   );
