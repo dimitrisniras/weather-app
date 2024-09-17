@@ -35,5 +35,5 @@ export function useWeatherData(location: string) {
     if (location) fetchWeatherData();
   }, [location]);
 
-  return { weatherData, forecastData, isLoading, error };
+  return { weatherData, forecastData, isLoading, error, setError };
 }
