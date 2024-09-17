@@ -1,69 +1,44 @@
 "use client";
 
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
 import Search from '@/components/Search';
 import CurrentWeather from '@/components/CurrentWeather';
 import Forecast from '@/components/Forecast';
-
+import { useWeatherData } from '@/hooks/useWeatherData';
 
 export default function Home() {
-  const [location, setLocation] = useState<string>();
-  const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
-  const [forecastData, setForecastData] = useState<ForecastData | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchWeatherData = async () => {
-      const API_KEY: unknown = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
-      if (!API_KEY) {
-        setError('Error fetching weather data.');
-        return;
-      }
-
-      const URL: unknown = process.env.NEXT_PUBLIC_WEATHER_URL;
-      if (!URL) setError('Error fetching weather data.');
-
-      setIsLoading(true);
-      setError(null);
-
-      try {
-
-        const response = await axios.get(`${URL}/weather?q=${location}&appid=${API_KEY}&units=metric`);
-        setWeatherData(response.data);
-      } catch (error) {
-        setError('Error fetching weather data. Please try again.');
-        console.error(error);
-      } finally {
-        setIsLoading(false);
-      }
-
-      try {
-        const forecastResponse = await axios.get(`${URL}/forecast?q=<span class="math-inline">\{location\}&appid\=</span>${API_KEY}&units=metric`);
-        setForecastData(forecastResponse.data);
-      } catch (error) {
-        // Handle forecast data fetching error if needed
-        console.error(error);
-      }
-    };
-
-    if (location) fetchWeatherData();
-  }, [location]);
+  const [location, setLocation] = useState<string>('London');
+  const { weatherData, forecastData, isLoading, error } = useWeatherData(location);
 
   const handleSearch = (searchLocation: string) => {
     setLocation(searchLocation);
   };
 
   return (
-    <main>
-      <h1>Weather App</h1>
-      <Search onSearch={handleSearch} />
+    <main className="container mx-auto p-4 bg-cover bg-center min-h-screen"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1501614302116-036d77974d2e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')" }}>
+      <div className="max-w-5xl mx-auto">
+        <div className="bg-white p-8 rounded-lg shadow-lg mb-6">
+          <h1 className="text-4xl font-bold mb-6 text-center text-gray-800">Weather App</h1>
+          <Search onSearch={handleSearch} />
+        </div>
 
-      {isLoading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
-      {weatherData && <CurrentWeather data={weatherData} />}
-      {forecastData && <Forecast data={forecastData} />}
+        {isLoading && <p className="text-center text-gray-600 mt-4">Loading...</p>}
+        {error && <p className="text-red-500 text-center mt-4">{error}</p>}
+
+        <div className="flex flex-col space-y-4"> 
+          {weatherData && (
+            <div className="bg-white p-6 rounded-lg shadow-md"> {/* Removed opacity */}
+              <CurrentWeather data={weatherData} />
+            </div>
+          )}
+          {forecastData && (
+            <div className="bg-white p-6 rounded-lg shadow-md"> {/* Removed opacity */}
+              <Forecast data={forecastData} />
+            </div>
+          )}
+        </div>
+      </div>
     </main>
   );
 }
