@@ -18,10 +18,7 @@ export default function Home() {
   return (
     <main
       className="container mx-auto p-4 bg-cover bg-center min-h-screen"
-      style={{
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1501614302116-036d77974d2e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')",
-      }}
+      style={{}}
     >
       <div className="max-w-5xl mx-auto">
         <div className="bg-white p-8 rounded-lg shadow-lg mb-6">
@@ -32,7 +29,9 @@ export default function Home() {
         </div>
 
         {isLoading && (
-          <p className="text-center text-gray-600 mt-4">Loading...</p>
+          <div className="flex justify-center items-center mt-4">
+            <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-blue-500"></div>
+          </div>
         )}
         {error && <p className="text-red-500 text-center mt-4">{error}</p>}
 
