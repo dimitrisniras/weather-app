@@ -1,0 +1,15 @@
+npm run lint:fix  # Run linting
+npm run format # Run formatting
+
+# Add this line to prevent accidental direct commits to the main branch
+if [ "$CI" != "true" ]; then
+  protected_branch='main'
+  current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
+
+  if [ "$current_branch" = "$protected_branch" ]; then
+    echo "Direct commits to the '$protected_branch' branch are not allowed. Please use a pull request."
+    exit 1 
+  fi
+fi
+
+git add .
