@@ -1,30 +1,13 @@
 interface WeatherData {
-  name: string;
-  main: {
-    temp: number;
-    feels_like: number;
-    humidity: number;
-  };
-  weather: {
-    description: string;
-  }[];
-  wind: {
-    speed: number;
-  };
-}
-
-interface ForecastData {
-  list: ForecastItem[];
-}
-
-interface ForecastItem {
   dt: number;
   pop: number;
+  name: number;
   main: {
     temp: number;
     temp_max: number;
     temp_min: number;
     feels_like: number;
+    humidity: number;
   };
   weather: {
     description: string;
@@ -34,4 +17,8 @@ interface ForecastItem {
     deg: number;
     speed: number;
   };
+}
+
+interface ForecastData {
+  list: WeatherData[];
 }

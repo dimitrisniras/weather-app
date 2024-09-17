@@ -40,14 +40,12 @@ export default function Home() {
           {weatherData && (
             <div className="bg-white p-6 rounded-lg shadow-md">
               {" "}
-              {/* Removed opacity */}
               <CurrentWeather data={weatherData} />
             </div>
           )}
           {forecastData && (
             <div className="bg-white p-6 rounded-lg shadow-md">
               {" "}
-              {/* Removed opacity */}
               <Forecast data={forecastData} />
             </div>
           )}
