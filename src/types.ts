@@ -18,11 +18,11 @@ interface ForecastData {
 }
 
 interface ForecastItem {
-    dt: number;
-    main: {
-        temp: number;
-    };
-    weather: {
-        description: string;
-    }[];
+  dt: number;
+  main: {
+    temp: number;
+  };
+  weather: {
+    description: string;
+  }[];
 }

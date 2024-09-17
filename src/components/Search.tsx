@@ -21,14 +21,18 @@ function Search({ onSearch }: SearchProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input 
-        type="text" 
+    <form onSubmit={handleSubmit} className="flex items-center mb-4">
+      <input
+        type="text"
         placeholder="Enter city"
         value={searchInput}
         onChange={handleInputChange}
+        className="border border-gray-300 rounded-l-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
-      <button type="submit">Search</button>
+      <button
+        type="submit"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r-md">Search
+      </button>
     </form>
   );
 }
