@@ -7,6 +7,7 @@ import {
   WiSnow,
   WiWindDeg,
 } from "react-icons/wi";
+import ErrorDisplay from "@/components/ErrorDisplay";
 
 interface ForecastProps {
   data: ForecastData;
@@ -38,7 +39,8 @@ export const getWeatherIcon = (iconCode: string) => {
 };
 
 function Forecast({ data }: ForecastProps) {
-  if (!data || !data.list || data.list.length === 0) return null;
+  if (!data || !data.list || data.list.length === 0)
+    return <ErrorDisplay message="No weather data available." />;
 
   const hourlyForecasts = data.list.slice(0, 12);
 

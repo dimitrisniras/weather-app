@@ -4,13 +4,15 @@ import { useEffect, useState } from "react";
 import Search from "@/components/Search";
 import CurrentWeather from "@/components/CurrentWeather";
 import Forecast from "@/components/Forecast";
+import ErrorDisplay from "@/components/ErrorDisplay";
 import { useWeatherData } from "@/hooks/useWeatherData";
 import { reverseGeocode } from "@/utils/geocoding";
 import { MapPinIcon } from "@heroicons/react/24/outline";
 
 export default function Home() {
   const [location, setLocation] = useState<string>("");
-  const [userLocationEnabled, setUserLocationEnabled] = useState<boolean>(true);
+  const [userLocationEnabled, setUserLocationEnabled] =
+    useState<boolean>(false);
   const { weatherData, forecastData, isLoading, error, setError } =
     useWeatherData(location);
 
@@ -51,15 +53,9 @@ export default function Home() {
   return (
     <main
       className="container mx-auto p-4 bg-cover bg-center min-h-screen"
-      style={{
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1566228015633-8f8fca6e50b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')",
-      }}
+      style={{}}
     >
-      <div
-        className="max-w-5xl   
- mx-auto"
-      >
+      <div className="max-w-5xl mx-auto">
         <div className="bg-white p-8 rounded-lg shadow-lg mb-6">
           <h1 className="text-4xl font-bold mb-6 text-center text-gray-800">
             Weather App
@@ -89,7 +85,8 @@ export default function Home() {
         {isLoading && (
           <p className="text-center text-gray-600 mt-4">Loading...</p>
         )}
-        {error && <p className="text-red-500 text-center mt-4">{error}</p>}
+
+        {error && <ErrorDisplay message={error} />}
 
         <div className="flex flex-col space-y-4">
           {weatherData && (
