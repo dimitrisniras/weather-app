@@ -22,3 +22,19 @@ interface WeatherData {
 interface ForecastData {
   list: WeatherData[];
 }
+
+interface CurrentWeatherProps {
+  data: WeatherData;
+  units: Units;
+}
+
+interface ForecastProps {
+  data: ForecastData;
+  units: Units;
+}
+
+interface ErrorDisplayProps {
+  message: string;
+}
+
+type Units = 'metric' | 'imperial';
