@@ -16,6 +16,7 @@ A simple but visually appealing weather app built with Next.js, TypeScript, and 
 - **TypeScript:** A typed superset of JavaScript that adds static types and improves code maintainability.
 - **Tailwind CSS:** A utility-first CSS framework for rapid UI development.
 - **OpenWeatherMap API:** Provides weather data for the app.
+- **OpenCage Geocoding API:** Provides location track for the app.
 - **Axios:** A promise-based HTTP client for making API requests.
 - **React Icons:** A library for easily using popular icon sets in React applications.
 
@@ -39,22 +40,28 @@ A simple but visually appealing weather app built with Next.js, TypeScript, and 
    - Sign up for a free account at `https://openweathermap.org/`
    - Create an API key and copy it.
 
-4. **Set up environment variables:**
+4. **Obtain an OpenCage Geocoding API key:**
+
+   - Sign up for a free account at `https://opencagedata.com/`
+   - Create an API key and copy it.
+
+5. **Set up environment variables:**
 
    - Create a `.env.local` file in the root of the project.
-   - Add the following line, replacing `YOUR_API_KEY` with your actual API key:
+   - Add the following line, replacing `YOUR_OPENWEATHERMAP_API_KEY` and `YOUR_OPENCAGE_API_KEY` with your actual API keys:
 
      ```env
-     NEXT_PUBLIC_WEATHER_API_KEY=YOUR_API_KEY
+     NEXT_PUBLIC_WEATHER_API_KEY=YOUR_OPENWEATHERMAP_API_KEY
+     NEXT_PUBLIC_OPENCAGE_API_KEY=YOUR_OPENCAGE_API_KEY
      ```
 
-5. **Run the development server:**
+6. **Run the development server:**
 
    ```bash
    npm run dev
    ```
 
-6. **Open the app in your browser:**
+7. **Open the app in your browser:**
 
    - The app should be running at `http://localhost:3000`
 
